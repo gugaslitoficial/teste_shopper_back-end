@@ -2,26 +2,8 @@ Este é um projeto Node.js com TypeScript que oferece uma API para gerenciamento
 
 ESTRUTURA DO PROJETO:
 
-├── dist/                # Arquivos compilados (após build)
-├── node_modules/        # Dependências do projeto
-├── src/                 # Código fonte
-│   ├── models/          # Módulos de banco de dados
-│   │   └── measure.ts   # Funções para manipular as medições no banco de dados
-│   ├── routes/          # Rotas da API
-│   │   ├── confirm.ts   # Rota para confirmação de medições
-│   │   ├── list.ts      # Rota para listar medições
-│   │   └── upload.ts    # Rota para upload de medições
-│   ├── utils/           # Utilitários do projeto
-│   │   └── validators.ts# Funções de validação
-│   └── index.ts         # Arquivo principal do servidor Express
-├── .dockerignore        # Arquivos a serem ignorados pelo Docker
-├── .env                 # Arquivo de configuração de variáveis de ambiente
-├── database.db          # Banco de dados SQLite
-├── docker-compose.yml   # Configuração do Docker Compose
-├── Dockerfile           # Configuração do Docker
-├── package-lock.json    # Lockfile do npm
-├── package.json         # Dependências e scripts do projeto
-├── tsconfig.json        # Configurações do TypeScript
+![image](https://github.com/user-attachments/assets/f9c72e9a-c288-4e27-a6c6-4c57a89a4709)
+
 
 FUNCIONALIDADES:
 
