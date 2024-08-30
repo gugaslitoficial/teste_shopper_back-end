@@ -42,7 +42,7 @@ function validateRequestBody(body: any) {
 
         try {
             //Integrando com a API Gemini do Google
-            const response = await axios.post('https://api.gemini.com/vision', { image, api_key: "AIzaSyBmJjMXwbfoEaQAWOuUz0Jm5-CUIcD5qXA" });
+            const response = await axios.post('https://api.gemini.com/vision', { image, api_key: "<API_KEY_GEMINI>" });
             const { image_url, measure_value, measure_uuid } = response.data;
 
             //Aqui será enviada a resposta:
