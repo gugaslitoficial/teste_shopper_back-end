@@ -4,9 +4,7 @@ import { isBase64 } from '../utils/validators';
 
 const router = express.Router();
 
-//Aqui eu vou criar uma função de validação:
 function validateRequestBody(body: any) {
-    //Aqui irei criar uma validação dos campos:
     if (
         typeof body.image !== 'string' ||
         !isBase64(body.image) ||
@@ -22,7 +20,6 @@ function validateRequestBody(body: any) {
     router.post('/', async (req: Request, res: Response) => {
         const { image, customer_code, measure_datetime, measure_type } = req.body;
 
-        //Aqui irei validar os campos de requisição:
         if (!validateRequestBody(req.body)) {
             return res.status(400).json({
                 error_code: 'INVALID_DATA',
@@ -30,8 +27,6 @@ function validateRequestBody(body: any) {
             });
         }
 
-        //Agora vou verificar se há uma leitura do mês atual - Apenas como teste:
-        //Substituindo pelo código real para verificar no banco de dados
         const exists = false;
         if (exists) {
             return res.status(409).json({
@@ -41,11 +36,9 @@ function validateRequestBody(body: any) {
         }
 
         try {
-            //Integrando com a API Gemini do Google
             const response = await axios.post('https://api.gemini.com/vision', { image, api_key: "<API_KEY_GEMINI>" });
             const { image_url, measure_value, measure_uuid } = response.data;
 
-            //Aqui será enviada a resposta:
             return res.status(200).json({
                 image_url,
                 measure_value,

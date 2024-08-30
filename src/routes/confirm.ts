@@ -3,7 +3,6 @@ import { getMeasure, updateMeasure, checkIfConfirmed } from '../models/measure';
 
 const router = express.Router();
 
-//Aqui irei colocar minha função de validação:
 function validateRequestBody(body: any) {
     return (
         typeof body.measure_uuid === 'string' &&
@@ -17,7 +16,6 @@ router.patch('/', async (req: Request, res: Response) => {
 
     console.log('Dados foram recebidos', req.body);
 
-    //Aqui irei validar o corpo da requisição:
     if (!validateRequestBody(req.body)) {
         return res.status(400).json({
             error_code: 'INVALID_DATA',
@@ -26,7 +24,6 @@ router.patch('/', async (req: Request, res: Response) => {
     }
 
     try {
-        //Aqui irei ver se o código de leitura realmente existe:
         const measure = await getMeasure(measure_uuid);
         if (!measure) {
             return res.status(404).json({
@@ -35,7 +32,6 @@ router.patch('/', async (req: Request, res: Response) => {
             });
         }
 
-        //Agora, aqui será para verificar se o código da leitura já foi confirmado:
         const alreadyConfirmed = await checkIfConfirmed(measure_uuid);
         if (alreadyConfirmed) {
             return res.status(409).json({
@@ -44,10 +40,8 @@ router.patch('/', async (req: Request, res: Response) => {
             });
         }
 
-        //Aqui irá atualizar o banco de dados com um novo valor:
         await updateMeasure(measure_uuid, confirmed_value);
 
-        //Aqui irá enviar a resposta de sucesso, caso houver:
         return res.status(200).json({
             success: true,
         });
